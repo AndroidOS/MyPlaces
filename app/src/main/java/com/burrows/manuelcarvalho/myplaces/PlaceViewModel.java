@@ -10,13 +10,13 @@ import java.util.List;
 public class PlaceViewModel extends AndroidViewModel {
 
     private PlaceRepository repository;
-    private LiveData<List<Place>> allNotes;
+    private LiveData<List<Place>> allPlaces;
 
 
     public PlaceViewModel(@NonNull Application application) {
         super(application);
         repository = new PlaceRepository(application);
-        allNotes = repository.getAllPlaces();
+        allPlaces = repository.getAllPlaces();
     }
 
     public void insert(Place place) {
@@ -36,7 +36,7 @@ public class PlaceViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Place>> getAllPlaces() {
-        return getAllPlaces();
+        return allPlaces;
     }
 
 }

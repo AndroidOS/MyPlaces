@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+    private static final String TAG = "MainActivityFragment";
     private PlaceViewModel placeViewModel;
 
     public MainActivityFragment() {
@@ -36,7 +39,11 @@ public class MainActivityFragment extends Fragment {
         placeViewModel.getAllPlaces().observe(this, new Observer<List<Place>>() {
             @Override
             public void onChanged(@Nullable List<Place> places) {
-//                Toast.makeText(MainActivity.this,"Listening" + notes.size(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Listening" + places, Toast.LENGTH_SHORT).show();
+
+                for (Place place : places) {
+                    Log.d(TAG, "onChanged: " + place.getPlaceName());
+                }
 //                lister(notes);
                 //tester();
                 //adapter.setNotes(notes);

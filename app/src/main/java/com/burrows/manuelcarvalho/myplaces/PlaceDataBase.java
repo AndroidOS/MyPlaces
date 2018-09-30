@@ -48,6 +48,9 @@ public abstract class PlaceDataBase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
 
             placeDao.insert(new Place("Park", "Green Park", 1.0, 1.0));
+            placeDao.insert(new Place("House", "Green Park", 1.0, 1.0));
+            placeDao.insert(new Place("CarPark", "Green Park", 1.0, 1.0));
+            placeDao.insert(new Place("Beach", "Green Park", 1.0, 1.0));
 
             return null;
         }
