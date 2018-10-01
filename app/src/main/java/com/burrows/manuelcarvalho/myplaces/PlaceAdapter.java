@@ -36,8 +36,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceHolder>
         return places.size();
     }
 
-    public void setNotes(List<Place> notes) {
-        this.places = notes;
+    public void setPlaces(List<Place> places) {
+        this.places = places;
         notifyDataSetChanged();
     }
 

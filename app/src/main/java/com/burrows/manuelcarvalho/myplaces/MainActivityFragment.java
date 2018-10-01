@@ -23,6 +23,13 @@ public class MainActivityFragment extends Fragment {
     private static final String TAG = "MainActivityFragment";
     private PlaceViewModel placeViewModel;
     private RecyclerView recyclerView;
+//    private LocationCallback mLocationCallback;
+//    private FusedLocationProviderClient mFusedLocationClient;
+//    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
+//    private long FASTEST_INTERVAL = 2000; /* 2 sec */
+//
+//    private LocationRequest mLocationRequest;
+
 
     public MainActivityFragment() {
     }
@@ -54,11 +61,20 @@ public class MainActivityFragment extends Fragment {
                 for (Place place : places) {
                     Log.d(TAG, "onChanged: " + place.getPlaceName());
                 }
-//                lister(notes);
-                //tester();
-                adapter.setNotes(places);
+
+                adapter.setPlaces(places);
             }
         });
+
+
+    }
+
+    public void fabClicker() {
+
+
+        com.burrows.manuelcarvalho.myplaces.Location location = new com.burrows.manuelcarvalho.myplaces.Location(getActivity());
+        location.fabClicker();
+
 
     }
 

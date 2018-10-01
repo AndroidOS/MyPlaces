@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
+    MainActivityFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +19,13 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        fragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                fragment.fabClicker();
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
