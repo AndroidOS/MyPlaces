@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import java.util.List;
 public class MainActivityFragment extends Fragment {
     private static final String TAG = "MainActivityFragment";
     private PlaceViewModel placeViewModel;
+    private RecyclerView recyclerView;
 
     public MainActivityFragment() {
     }
@@ -34,6 +37,13 @@ public class MainActivityFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setHasFixedSize(true);
+
+        final PlaceAdapter adapter = new PlaceAdapter();
+        recyclerView.setAdapter(adapter);
+
         placeViewModel = ViewModelProviders.of(this).get(PlaceViewModel.class);
         //noteViewModel.insert(new Note("Title6", "description 6", 6));
         placeViewModel.getAllPlaces().observe(this, new Observer<List<Place>>() {
@@ -46,7 +56,7 @@ public class MainActivityFragment extends Fragment {
                 }
 //                lister(notes);
                 //tester();
-                //adapter.setNotes(notes);
+                adapter.setNotes(places);
             }
         });
 
