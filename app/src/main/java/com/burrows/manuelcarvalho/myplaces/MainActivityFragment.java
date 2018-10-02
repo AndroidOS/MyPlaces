@@ -2,6 +2,7 @@ package com.burrows.manuelcarvalho.myplaces;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,12 +24,6 @@ public class MainActivityFragment extends Fragment {
     private static final String TAG = "MainActivityFragment";
     private PlaceViewModel placeViewModel;
     private RecyclerView recyclerView;
-//    private LocationCallback mLocationCallback;
-//    private FusedLocationProviderClient mFusedLocationClient;
-//    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
-//    private long FASTEST_INTERVAL = 2000; /* 2 sec */
-//
-//    private LocationRequest mLocationRequest;
 
 
     public MainActivityFragment() {
@@ -74,6 +69,12 @@ public class MainActivityFragment extends Fragment {
 
         com.burrows.manuelcarvalho.myplaces.Location location = new com.burrows.manuelcarvalho.myplaces.Location(getActivity());
         location.fabClicker();
+
+        Intent intent = new Intent(getActivity(), PlaceActivity.class);
+
+//            String message = editText.getText().toString();
+//            intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
 
 
     }
