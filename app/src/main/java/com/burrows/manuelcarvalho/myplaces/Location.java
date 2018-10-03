@@ -22,6 +22,8 @@ public class Location {
     private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
     private long FASTEST_INTERVAL = 2000; /* 2 sec */
 
+    //private LocationResult myResult;
+
     private LocationRequest mLocationRequest;
 
     public Location(Context context) {
@@ -35,15 +37,26 @@ public class Location {
                     return;
                 }
 
-                Log.d(TAG, "onLocationResult Lat: " + locationResult.getLastLocation().getLatitude());
-                Log.d(TAG, "onLocationResult Lat: " + locationResult.getLastLocation().getLongitude());
+                Model.locationResult = locationResult;
+                //myResult = locationResult;
+//                Log.d(TAG, "onLocationResult Lat: " + locationResult.getLastLocation().getLatitude());
+//                Log.d(TAG, "onLocationResult Lat: " + locationResult.getLastLocation().getLongitude());
                 stopLocationUpdates();
 
             }
         };
+
+
     }
 
-    public void fabClicker() {
+//    public LocationResult getLocation(){
+//        locationStart();
+//
+//        return myResult;
+//
+//    }
+
+    public void locationStart() {
 
         if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, android.Manifest.permission.ACCESS_COARSE_LOCATION)

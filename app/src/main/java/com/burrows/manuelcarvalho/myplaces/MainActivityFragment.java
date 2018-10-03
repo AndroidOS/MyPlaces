@@ -24,6 +24,7 @@ public class MainActivityFragment extends Fragment {
     private static final String TAG = "MainActivityFragment";
     private PlaceViewModel placeViewModel;
     private RecyclerView recyclerView;
+    private Location location;
 
 
     public MainActivityFragment() {
@@ -38,6 +39,8 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        location = new com.burrows.manuelcarvalho.myplaces.Location(getActivity());
+        location.locationStart();
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -67,13 +70,15 @@ public class MainActivityFragment extends Fragment {
     public void fabClicker() {
 
 
-        com.burrows.manuelcarvalho.myplaces.Location location = new com.burrows.manuelcarvalho.myplaces.Location(getActivity());
-        location.fabClicker();
+        location = new com.burrows.manuelcarvalho.myplaces.Location(getActivity());
+        location.locationStart();
 
         Intent intent = new Intent(getActivity(), PlaceActivity.class);
 
-//            String message = editText.getText().toString();
-//            intent.putExtra(EXTRA_MESSAGE, message);
+        Log.d(TAG, "fabClicker: " + Model.locationResult.getLastLocation().getLongitude());
+//        intent.putExtra("Lat", location.getLocation().getLastLocation().getLatitude());
+//        intent.putExtra("Long", location.getLocation().getLastLocation().getLongitude());
+
         startActivity(intent);
 
 
