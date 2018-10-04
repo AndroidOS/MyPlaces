@@ -19,8 +19,8 @@ public class Location {
 
     private LocationCallback mLocationCallback;
     private FusedLocationProviderClient mFusedLocationClient;
-    private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
-    private long FASTEST_INTERVAL = 2000; /* 2 sec */
+    private long UPDATE_INTERVAL = 10 * 1;  /* 10 secs */
+    private long FASTEST_INTERVAL = 10; /* 2 sec */
 
     //private LocationResult myResult;
 
