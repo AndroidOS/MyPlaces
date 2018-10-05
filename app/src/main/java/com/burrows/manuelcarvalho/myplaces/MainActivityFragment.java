@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -25,6 +27,7 @@ public class MainActivityFragment extends Fragment {
     private PlaceViewModel placeViewModel;
     private RecyclerView recyclerView;
     private Location location;
+    public static final int ADD_PLACE_REQUEST = 1;
 
 
     public MainActivityFragment() {
@@ -75,13 +78,25 @@ public class MainActivityFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), PlaceActivity.class);
 
-        Log.d(TAG, "fabClicker: " + Model.locationResult.getLastLocation().getLongitude());
+        //Log.d(TAG, "fabClicker: " + Model.locationResult.getLastLocation().getLongitude());
 //        intent.putExtra("Lat", location.getLocation().getLastLocation().getLatitude());
 //        intent.putExtra("Long", location.getLocation().getLastLocation().getLongitude());
+        startActivityForResult(intent, ADD_PLACE_REQUEST);
 
-        startActivity(intent);
+        //startActivity(intent);
 
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ADD_PLACE_REQUEST && resultCode == RESULT_OK) {
+            String name = data.getStringExtra(PlaceActivity.EXTRA_NAME);
+            String description = data.getStringExtra(PlaceActivity.EXTRA_DESCRIPTION);
+
+            Toast.makeText(getActivity(), " " + name + " " + description, Toast.LENGTH_SHORT).show();
+
+        }
+    }
 }
