@@ -36,8 +36,8 @@ public class PlaceActivity extends AppCompatActivity {
         e1 = intent.getDoubleExtra("lat", 0);
         e2 = intent.getDoubleExtra("long", 0);
 
-//        mTextViewLat.setText(" " + Model.locationResult.getLastLocation().getLatitude());
-//        mTextViewLong.setText(" " + Model.locationResult.getLastLocation().getLongitude());
+        mTextViewLat.setText(" " + Model.locationResult.getLastLocation().getLatitude());
+        mTextViewLong.setText(" " + Model.locationResult.getLastLocation().getLongitude());
 
         //Log.d(TAG, "onCreate: " + Model.locationResult.getLastLocation().getLatitude() + " " + Model.locationResult.getLastLocation().getLongitude());
     }

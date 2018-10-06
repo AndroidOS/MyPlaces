@@ -15,6 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +42,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.burrows.manuelcarvalho.myplaces.MainActivity" />
         </activity>
-        <activity android:name=".PlaceActivity"></activity>
+        <activity
+            android:name=".PlaceActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
