@@ -41,6 +41,10 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceHolder>
         notifyDataSetChanged();
     }
 
+    public Place getPlaceAt(int position) {
+        return places.get(position);
+    }
+
     class PlaceHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewDescription;

@@ -19,8 +19,8 @@ public class Location {
 
     private LocationCallback mLocationCallback;
     private FusedLocationProviderClient mFusedLocationClient;
-    private long UPDATE_INTERVAL = 10 * 1;  /* 10 secs */
-    private long FASTEST_INTERVAL = 10; /* 2 sec */
+    private long UPDATE_INTERVAL = 1;  /* 10 secs */
+    private long FASTEST_INTERVAL = 1; /* 2 sec */
 
     //private LocationResult myResult;
 
@@ -38,10 +38,6 @@ public class Location {
                 }
 
                 Model.locationResult = locationResult;
-                //myResult = locationResult;
-//                Log.d(TAG, "onLocationResult Lat: " + locationResult.getLastLocation().getLatitude());
-//                Log.d(TAG, "onLocationResult Lat: " + locationResult.getLastLocation().getLongitude());
-                stopLocationUpdates();
 
             }
         };
@@ -49,12 +45,6 @@ public class Location {
 
     }
 
-//    public LocationResult getLocation(){
-//        locationStart();
-//
-//        return myResult;
-//
-//    }
 
     public void locationStart() {
 

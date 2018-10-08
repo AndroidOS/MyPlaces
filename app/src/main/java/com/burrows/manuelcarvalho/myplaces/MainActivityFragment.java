@@ -9,7 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,15 +57,30 @@ public class MainActivityFragment extends Fragment {
         placeViewModel.getAllPlaces().observe(this, new Observer<List<Place>>() {
             @Override
             public void onChanged(@Nullable List<Place> places) {
-                Toast.makeText(getActivity(), "Listening" + places, Toast.LENGTH_SHORT).show();
-
-                for (Place place : places) {
-                    Log.d(TAG, "onChanged: " + place.getPlaceName());
-                }
+//                Toast.makeText(getActivity(), "Listening" + places, Toast.LENGTH_SHORT).show();
+//
+//                for (Place place : places) {
+//                    Log.d(TAG, "onChanged: " + place.getPlaceName());
+//                }
 
                 adapter.setPlaces(places);
             }
         });
+
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+
+                placeViewModel.delete(adapter.getPlaceAt(viewHolder.getAdapterPosition()));
+                Toast.makeText(getActivity(), "Place deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(recyclerView);
 
 
     }
