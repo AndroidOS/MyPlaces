@@ -37,7 +37,9 @@ public class Location {
                     return;
                 }
 
-                Model.locationResult = locationResult;
+                //Model.locationResult = locationResult;
+                Model.latitude = locationResult.getLastLocation().getLatitude();
+                Model.longitude = locationResult.getLastLocation().getLongitude();
 
             }
         };

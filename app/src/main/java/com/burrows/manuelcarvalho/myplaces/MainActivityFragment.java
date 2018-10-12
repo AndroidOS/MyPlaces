@@ -62,6 +62,7 @@ public class MainActivityFragment extends Fragment {
 //                for (Place place : places) {
 //                    Log.d(TAG, "onChanged: " + place.getPlaceName());
 //                }
+                Model.places = places;
 
                 adapter.setPlaces(places);
             }
@@ -107,7 +108,7 @@ public class MainActivityFragment extends Fragment {
         if (requestCode == ADD_PLACE_REQUEST && resultCode == RESULT_OK) {
             String name = data.getStringExtra(PlaceActivity.EXTRA_NAME);
             String description = data.getStringExtra(PlaceActivity.EXTRA_DESCRIPTION);
-            Place newPlace = new Place(name, description, Model.locationResult.getLastLocation().getLatitude(), Model.locationResult.getLastLocation().getLongitude());
+            Place newPlace = new Place(name, description, Model.latitude, Model.longitude);
             placeViewModel.insert(newPlace);
             Toast.makeText(getActivity(), " " + name + " " + description, Toast.LENGTH_SHORT).show();
 
